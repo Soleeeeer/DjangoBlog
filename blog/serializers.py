@@ -1,7 +1,13 @@
 from rest_framework import serializers
-from .models import Category
+from .models import Category, Publication
 
-class CategorySerializer(serializers.ModelSerializer):
+class CategorySerializers(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
+
+class PublicationSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Publication
+        fields = ['id', 'title', 'content', 'author', 'created_at', 'updated_at']
+        read_only_fields = ['author', 'created_at', 'updated_at']

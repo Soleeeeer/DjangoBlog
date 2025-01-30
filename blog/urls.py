@@ -1,10 +1,10 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import CategoryViewSet
-
-router = DefaultRouter()
-router.register(r'categories', CategoryViewSet)
+from django.urls import path 
+from . import views
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('categories/', views.CategoryListCreateAPIView.as_view()),
+    path('categories/<int:pk>', views.CategoryRetrieveUpdateDeleteAPIView.as_view()),
+    path('publications/', views.PublicationListCreateAPIView.as_view()),
+    path('publications/<int:pk>', views.PublicationRetrieveUpdateDeleteAPIView.as_view())
 ]
+
